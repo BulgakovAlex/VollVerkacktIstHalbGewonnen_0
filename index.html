@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wissenstest: Voll verkackt ist halb gewonnen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bg-music" src="assets/music.mp3" loop preload="auto"></audio>
+    <div id="bg-slider"></div>
+
+    <div class="app-container">
+        <div id="start-screen" class="screen active">
+            <h1>Wissenstest</h1>
+            <h2>"Voll verkackt ist halb gewonnen"</h2>
+            <p>Teste dein Wissen über das Buch von Tom Limes.</p>
+            <button id="btn-start" class="primary-btn">Test starten</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="header-bar">
+                <span id="progress-text">Frage 1 von 25</span>
+            </div>
+            <h2 id="question-text">Frage...</h2>
+            
+            <div id="options-container" class="options-grid">
+                </div>
+
+            <div class="nav-buttons">
+                <button id="btn-back" class="secondary-btn">Zurück</button>
+                <button id="btn-skip" class="secondary-btn">Überspringen</button>
+                <button id="btn-restart" class="danger-btn">Neu starten</button>
+            </div>
+        </div>
+
+        <div id="confirm-screen" class="screen">
+            <h2>Test beendet!</h2>
+            <p>Möchten Sie Ihre Antworten jetzt überprüfen und die Erklärungen lesen?</p>
+            <div class="confirm-buttons">
+                <button id="btn-confirm-yes" class="primary-btn">Ja, Antworten prüfen</button>
+                <button id="btn-confirm-no" class="secondary-btn">Nein, nur das Ergebnis anzeigen</button>
+            </div>
+        </div>
+
+        <div id="score-screen" class="screen">
+            <h2>Dein Ergebnis</h2>
+            <div class="score-display">
+                <span id="final-score-numbers">0 / 25</span>
+            </div>
+            <button id="btn-show-answers" class="primary-btn">Antworten und Erklärungen ansehen</button>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Detaillierte Ergebnisse</h2>
+            <p id="results-score-header" style="font-size: 1.5rem; text-align: center; margin-bottom: 20px;">Dein Ergebnis: 0 / 25</p>
+            <div id="results-container" class="results-scroll-box"></div>
+            <button id="btn-play-again" class="primary-btn" style="margin-top: 20px;">Noch einmal spielen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

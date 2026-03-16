@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    overflow: hidden; /* Запрещаем скролл всей страницы */
+    color: #fff;
+    background-color: #000;
+}
+
+/* Слайдер фона */
+#bg-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 2s ease-in-out; /* Плавная смена картинок */
+    z-index: -1;
+}
+
+/* Главный контейнер (полупрозрачный) */
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Экраны */
+.screen {
+    display: none;
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(30, 30, 30, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.screen.active {
+    display: flex;
+}
+
+h1, h2 { text-align: center; margin-bottom: 20px; }
+p { text-align: center; margin-bottom: 30px; font-size: 1.2rem; }
+
+/* Кнопки ответов */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: #3a3a3a;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option-btn:hover { background-color: #555; }
+.option-btn.selected { border-color: #4CAF50; background-color: #2e5930; }
+
+/* Навигация */
+.nav-buttons, .confirm-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary-btn { background-color: #007bff; color: white; width: 100%; font-weight: bold; }
+.primary-btn:hover { background-color: #0056b3; }
+.secondary-btn { background-color: #6c757d; color: white; flex: 1; }
+.secondary-btn:hover { background-color: #5a6268; }
+.danger-btn { background-color: #dc3545; color: white; flex: 1; }
+.danger-btn:hover { background-color: #c82333; }
+
+/* Экран результатов */
+.score-display {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.results-scroll-box {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.result-item {
+    background: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.result-item h3 { font-size: 1.1rem; margin-bottom: 10px; text-align: left; }
+.answer-wrong { color: #ff6b6b; font-weight: bold; }
+.answer-correct { color: #4CAF50; font-weight: bold; }
+.quote-box {
+    background: #1a1a1a;
+    padding: 10px;
+    border-left: 4px solid #007bff;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #ccc;
+}
