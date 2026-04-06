@@ -157,6 +157,7 @@ let currentQuestionIndex = 0;
 let userAnswers = new Array(quizData.length).fill(null); // null = пропущено
 let currentBg = 1;
 const maxBgs = 15;
+let isMusicPlaying = false;
 
 // Элементы DOM
 const screens = {
@@ -172,6 +173,19 @@ const bgMusic = document.getElementById('bg-music');
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
 const progressText = document.getElementById('progress-text');
+const musicToggle = document.getElementById('music-toggle');
+
+musicToggle.addEventListener('click', () => {
+    if (isMusicPlaying) {
+        bgMusic.pause();
+        isMusicPlaying = false;
+        musicToggle.textContent = '🔇';
+    } else {
+        bgMusic.play().catch(e => console.log("Аудио заблокировано:", e));
+        isMusicPlaying = true;
+        musicToggle.textContent = '🔊';
+    }
+});
 
 // Смена экранов
 function showScreen(screenName) {
@@ -188,7 +202,6 @@ setInterval(() => {
 
 // Старт игры
 document.getElementById('btn-start').addEventListener('click', () => {
-    bgMusic.play().catch(e => console.log("Автозапуск аудио заблокирован браузером"));
     bgSlider.style.backgroundImage = `url('assets/bg/bg1.jpg')`;
     
     currentQuestionIndex = 0;
@@ -243,7 +256,8 @@ document.getElementById('btn-restart').addEventListener('click', () => {
     if(confirm('Möchten Sie wirklich von vorne beginnen?')) {
         showScreen('start');
         bgMusic.pause();
-        bgMusic.currentTime = 0;
+        isMusicPlaying = false;
+        musicToggle.textContent = '🔇';
     }
 });
 
@@ -263,6 +277,9 @@ document.getElementById('btn-confirm-no').addEventListener('click', generateScor
 document.getElementById('btn-show-answers').addEventListener('click', generateDetailedResults);
 
 document.getElementById('btn-play-again').addEventListener('click', () => {
+    bgMusic.pause();          // добавить
+    isMusicPlaying = false;   // добавить
+    musicToggle.textContent = '🔇'; // добавить
     showScreen('start');
 });
 
