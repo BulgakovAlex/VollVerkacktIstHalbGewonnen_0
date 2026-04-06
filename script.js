@@ -181,6 +181,7 @@ musicToggle.addEventListener('click', () => {
         isMusicPlaying = false;
         musicToggle.textContent = '🔇';
     } else {
+        bgMusic.muted = false; // ← добавь эту строку
         bgMusic.play().catch(e => console.log("Аудио заблокировано:", e));
         isMusicPlaying = true;
         musicToggle.textContent = '🔊';
