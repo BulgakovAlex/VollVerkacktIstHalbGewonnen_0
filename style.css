@@ -1,4 +1,5 @@
 * {
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,10 +7,31 @@
 }
 
 body {
-    overflow: hidden; /* Запрещаем скролл всей страницы */
+    touch-action: manipulation;
+    overflow: hidden;
     color: #fff;
     background-color: #000;
 }
+
+#music-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid rgba(255,255,255,0.3);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.3s;
+}
+#music-toggle:hover { background: rgba(255,255,255,0.2); }
 
 /* Слайдер фона */
 #bg-slider {
@@ -44,6 +66,8 @@ body {
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-height: 92vh;
+    overflow-y: auto;
 }
 
 .screen.active {
@@ -70,6 +94,8 @@ p { text-align: center; margin-bottom: 30px; font-size: 1.2rem; }
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    min-height: 48px;
+    touch-action: manipulation;
 }
 
 .option-btn:hover { background-color: #555; }
@@ -89,13 +115,15 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    min-height: 44px;
+    touch-action: manipulation;
 }
 
 .primary-btn { background-color: #007bff; color: white; width: 100%; font-weight: bold; }
 .primary-btn:hover { background-color: #0056b3; }
-.secondary-btn { background-color: #6c757d; color: white; flex: 1; }
+.secondary-btn { background-color: #6c757d; color: white; flex: 1; min-width: 80px;}
 .secondary-btn:hover { background-color: #5a6268; }
-.danger-btn { background-color: #dc3545; color: white; flex: 1; }
+.danger-btn { background-color: #dc3545; color: white; flex: 1; min-width: 80px;}
 .danger-btn:hover { background-color: #c82333; }
 
 /* Экран результатов */
@@ -131,4 +159,25 @@ button {
     font-style: italic;
     font-size: 0.95rem;
     color: #ccc;
+}
+
+@media (max-width: 500px) {
+    .screen {
+        padding: 20px 15px;
+        width: 95%;
+    }
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+    .nav-buttons {
+        flex-direction: column;
+    }
+    .nav-buttons .secondary-btn,
+    .nav-buttons .danger-btn {
+        flex: unset;
+        width: 100%;
+    }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+    .score-display { font-size: 3rem; }
 }
